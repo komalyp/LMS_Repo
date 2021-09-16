@@ -1,0 +1,78 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div align="center">
+		<form action="#" th:action="@{/books}"
+			th:object="${book}" method="get">
+			<h4>Book Found !</h4>
+			<table border="1">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Book Name</th>
+						<th>Author Name</th>
+						<th>Quantity</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="book : ${SearchedBooks}">
+						<td th:text="${book.id}"></td>
+						<td th:text="${book.bookname}"></td>
+						<td th:text="${book.author}"></td>
+						<td th:text="${book.quantity}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="submit" value="Go back">
+		</form>
+	</div>
+
+
+
+
+	<!--<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book found</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<form action="#" th:action="@{/books}"
+			th:object="${book}" method="post">
+				<h4>Book found!</h4>
+
+				<div class="row">
+					<div class="col-25">
+						<p>Book Name:</p>
+					</div>
+					<div class="col-75">
+						<p th:text="${book.bookname}"></p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<p>Author Name:</p>
+					</div>
+					<div class="col-75">
+						<p th:text="${book.author}"></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<p>Quantity:</p>
+					</div>
+					<div class="col-75">
+						<p th:text="${book.quantity}"></p>
+					</div>
+				</div>
+
+				<input type="submit" value="Go back">
+			</form>
+		</div>
+	</div>
+</body>
+</html>  -->

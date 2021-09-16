@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Browse Book</title>
+</head>
+<body>
+	<div align="center">
+		<form action="#" th:action="@{/books/browsebooks}" th:object="${book}"
+			method="GET">
+			<table border="1">
+				<tr>
+					<td>BookName:</td>
+					<td><input type="text" th:field="*{bookname}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Search</button></td>
+				</tr>
+			</table>
+		</form>
+		</div>
+</body>
+</html>

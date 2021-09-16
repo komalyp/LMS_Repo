@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Login</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<form action="#" th:action="@{/login}" method="POST">
+
+				<div class="row">
+					<div class="col-25">
+						<label for="username">Username</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="username" name="username" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="password">Password</label>
+					</div>
+					<div class="col-75">
+						<input type="password" id="password" name="password" /><br>
+					</div>
+				</div>
+					
+				<div class="row">
+					<div class="col-25">
+						<label for="Roles">Choose Role:</label> <select id="role">
+							<option value="Admin">Admin</option>
+							<option value="User">User</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- <div class="form-actions">
+					<input type="submit" value="Login">
+				</div>
+			</form>
+			<form th:action="@{/register}" method="GET">
+				<div class="row">
+					<input type="submit" value="Register">
+				</div> -->
+			</form>
+
+		</div>
+	</div>
+</body>
+</html>
