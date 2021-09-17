@@ -1,34 +1,13 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome To Library Management System</title>
+ </head>
 <body>
-	<div align="center">
-		
-		<a href="/books/new">Add Book</a>
-		<a href="/books/search">Search Book</a>
-		<a href="/books/IssueBooks">Issued Books</a>	
-			
-		<table border="1" >
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Book Name</th>
-					<th>Author Name</th>
-					<th>Quantity</th>
-					<th>Update</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="book : ${allBooks}">
-					<td th:text="${book.id}"></td>
-					<td th:text="${book.bookname}"></td>
-					<td th:text="${book.author}"></td>
-					<td th:text="${book.quantity}"></td>
-					<td><a th:href="@{/books/edit/{id}(id=${book.id})}">Update</a></td>
-					<td><a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
-					
-					
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <div>
+        <h1>Welcome To Library Management</h1>
+        <h3><a href="/users/register">Register</a></h3>
+        <h3><a href="/users/login">Login</a></h3>
+    </div>
+</body>
+</html>

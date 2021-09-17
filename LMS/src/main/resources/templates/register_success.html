@@ -1,23 +1,15 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Account created</title>
-
-<link rel="stylesheet" type="text/css" th:href="@{/CSS/security-layout.css}">
+    <meta charset="ISO-8859-1">
+    <title>Registration Success</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-
-	
-	    <div class="wrapperAccountCreated">
-	  		<div class="containerAccountCreated">
-	  			<p>Account created!</p>
-    	 		<form action="/login" method="GET">
-    	 			<input class="accountCreatedButton" type="submit" value="Go back to login page"/>
- 				</form>
- 			</div>
- 		</div>
-
+    <div class="container text-center">
+        <h3>You have signed up successfully!</h3>
+        <h4><a th:href="/@{/home}">Go Home</a></h4>
+    </div>
+     
 </body>
 </html>

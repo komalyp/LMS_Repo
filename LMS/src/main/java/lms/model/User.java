@@ -1,79 +1,62 @@
-/*package lms.model;
-
-import java.util.List;
+package lms.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USERS")
+@Table(name = "User")
 public class User {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long userId;
-	
-	@Column(name="username")
-	private String userName;
-	
-	@Column(name="password")
+	@Column(name = "Emailid")
+	private String emailid;
+
+	@Column(name = "Firstname")
+	private String firstname;
+
+	@Column(name = "Lastname")
+	private String lastname;
+
+	@Column(name = "Password")
 	private String password;
-	
-	private boolean enabled = true;
-	
-	private String role = "ROLE_USER";
-	
-	@Column(name="FirstName")
-	private String firstName;
-	
-	@Column(name="LastName")
-	private String lastName;
-	
-	@Column(name="Email")
-	private String email;
-	
-	@OneToMany(mappedBy="reservedByUser")
-	private List<Book> reservedBooks;
-	
-	@OneToMany(mappedBy="theUser")
-	private List<Book> books;
-	
-//	@OneToMany(mappedBy="notificationReceiver")
-	//private List<Notification> notifications;
+
+	@Column(name = "Userid")
+	private String userid;
+
+	@ManyToOne
+	@JoinColumn(name = "Roleid")
+	private Role roleid;
 
 	public User() {
-		
-	}
-	
-	public User(String userName, String password, String email, String firstName,
-			String lastName) {
-		super();
-		this.userName = userName;
-		this.password = password;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
+
 	}
 
-	public long getUserId() {
-		return userId;
+	public String getEmailid() {
+		return emailid;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setEmailid(String emailid) {
+		this.emailid = emailid;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getPassword() {
@@ -84,58 +67,30 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
+	public String getUserid() {
+		return userid;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
-	public String getRole() {
-		return role;
+	public Role getRoleid() {
+		return roleid;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRoleid(Role roleid) {
+		this.roleid = roleid;
 	}
 
-	public String getEmail() {
-		return email;
+	public User(String emailid, String firstname, String lastname, String password, String userid, Role roleid) {
+		super();
+		this.emailid = emailid;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.password = password;
+		this.userid = userid;
+		this.roleid = roleid;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public List<Book> getBooks() {
-		return books;
-	}
-
-	public void setBooks(List<Book> books) {
-		this.books = books;
-	}	
-	public List<Book> getReservedBooks(){
-		return reservedBooks;
-	}
-
-	public void setReservedBooks(List<Book> reservedBooks) {
-		this.reservedBooks = reservedBooks;
-	}
-	}
-*/
+}
