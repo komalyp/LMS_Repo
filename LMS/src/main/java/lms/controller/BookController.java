@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
@@ -21,12 +22,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import lms.model.Book;
 import lms.repository.BookRepository;
 import lms.service.BookService;
-import utility.Constants;
+import utility.Const;
 
 
 
 @Controller
-@RequestMapping(Constants.BOOKS)
+@RequestMapping(Const.BOOKS)
 public class BookController {
 
 	@Autowired
@@ -41,68 +42,65 @@ public class BookController {
 	@GetMapping
 	public String getAllBooks(Model model) {
 		List<Book> list = bookService.loadAllBooks();
-		model.addAttribute(Constants.ALL_BOOKS, list);
-		return "index";
+		model.addAttribute(Const.ALL_BOOKS, list);
+		return Const.HOME;
 	}
 
-	@RequestMapping("/new")
+	@RequestMapping(Const.NEW_BOOK)
 	public String showNewBookPage(Model model) {
 		Book book = new Book();
-		model.addAttribute("book", book);
-		return "add-book";
+		model.addAttribute(Const.BOOK, book);
+		return Const.ADD_BOOK;
 	}
 
-	@RequestMapping("/search")
+	@RequestMapping(Const.SEARCH)
 	public String showSearchBookPage(Model model) {
 		Book book = new Book();
-		model.addAttribute("book", book);
-		System.out.println("We are in search controller");
-		return "search-book";
+		model.addAttribute(Const.BOOK, book);
+		return Const.SEARCH_BOOK;
 	}
 
-	@RequestMapping(path = "/search1/{id}", method = RequestMethod.POST)
+	@PostMapping(Const.SEARCH_ID)
 	//@ModelAttribute(Searched_Book)
 	public String showsearchBook(@PathVariable("id") int id,@ModelAttribute Book book,Model model) {
 		int id1 = book.getId();
-		System.out.println("We are in search1 controller --id:"+id1);
-		
 		Book book1 = bookService.searchBook(id1);
 		//System.out.println(book1.getId());
 		if (book1 != null) {
-			model.addAttribute("SearchedBooks",book1);
-			return "book-found.html";
+			model.addAttribute(Const.SEARCHED_BOOK,book1);
+			return Const.BOOK_FOUND;
 		} else {
 
-			return "book-not-found.html";
+			return Const.BOOK__NOT_FOUND;
 		}
 	}
 	
 	// todays task-Search and issue book
 	
-	@RequestMapping(path = "/save", method = RequestMethod.POST)
-	public String saveNewBook(@ModelAttribute("book") Book book) {
+	@PostMapping(Const.SAVE)
+	public String saveNewBook(@ModelAttribute(Const.BOOK) Book book) {
 		bookService.saveBook(book);
-		return "redirect:/books";
+		return Const.REDIRECT_BOOKS;
 	}
 
-	@GetMapping("/edit/{id}")
+	@GetMapping(Const.EDIT)
 	private String editBook(@PathVariable("id") int id, Model model) {
 		Book book = bookService.loadBookById(id);
-		model.addAttribute("book", book);
-		return "edit-book";
+		model.addAttribute(Const.BOOK, book);
+		return Const.EDIT_BOOK;
 	}
 
-	@RequestMapping(path = "/update/{id}", method = RequestMethod.POST)
+	@RequestMapping(Const.UPDATE_ON_ID)
 	private String updateBook(@PathVariable("id") int id, @ModelAttribute Book book) {
 		book.setId(id);
 		bookService.updateBook(book);
-		return "redirect:/books";
+		return Const.REDIRECT_BOOKS;
 	}
 
-	@GetMapping("/delete/{id}")
+	@GetMapping(Const.DELETE)
 	private String deleteBook(@PathVariable("id") int id) {
 		bookService.deleteBook(id);
-		return "redirect:/books";
+		return Const.REDIRECT_BOOKS;
 	}
 }
 /*
