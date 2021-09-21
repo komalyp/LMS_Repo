@@ -1,12 +1,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 	<div align="center">
-		
-		<a href="/books/new">Add Book</a>
-		<a href="/books/search">Search Book</a>
-		<a href="/books/IssueBooks">Issued Books</a>	
-			
-		<table border="1" >
+
+		<a href="/books/viewBookByUser">View Books</a> 
+		<a href="/books/search">SearchBook</a> 
+		<a href="/books/orderBook">Order Book</a>
+		<a href="/books/returnBook">Return Book</a>
+
+		<!--  	<table border="1" >
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -25,10 +26,19 @@
 					<td th:text="${book.quantity}"></td>
 					<td><a th:href="@{/books/edit/{id}(id=${book.id})}">Update</a></td>
 					<td><a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
-					
+				
 					
 					</td>
 				</tr>
 			</tbody>
-		</table>
+		</table> -->
+		
+		 <div align="center">
+		<form action="#" th:action="@{/users}" th:object="${book}"
+			method="get">
+			<input type="submit" value="Logout">
+		</form>
 	</div>
+	</div>
+</body>
+</html>

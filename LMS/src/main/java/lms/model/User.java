@@ -27,9 +27,9 @@ public class User {
 	@Column(name = "Userid")
 	private String userid;
 
-	@ManyToOne
-	@JoinColumn(name = "Roleid")
-	private Role roleid;
+	//@ManyToOne
+	@Column(name = "Roleid")
+	private int roleid;
 
 	public User() {
 
@@ -75,15 +75,15 @@ public class User {
 		this.userid = userid;
 	}
 
-	public Role getRoleid() {
+	public int getRoleid() {
 		return roleid;
 	}
 
-	public void setRoleid(Role roleid) {
+	public void setRoleid(int roleid) {
 		this.roleid = roleid;
 	}
 
-	public User(String emailid, String firstname, String lastname, String password, String userid, Role roleid) {
+	public User(String emailid, String firstname, String lastname, String password, String userid, int roleid) {
 		super();
 		this.emailid = emailid;
 		this.firstname = firstname;

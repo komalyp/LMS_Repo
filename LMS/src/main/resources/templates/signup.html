@@ -8,7 +8,7 @@
 		<div>
 			<h1>User Registration - Sign Up</h1>
 		</div>
-		<form action="#" th:action="@{users/process_register}"
+		<form action="#" th:action="@{/users/saveUser}"
 			th:object="${user}" method="post">
 			<table border="1">
 				<tr>
@@ -42,8 +42,6 @@
 				</tr>
 			</table>
 		</form>
-	</div>
-
 	</div>
 </body>
 </html>

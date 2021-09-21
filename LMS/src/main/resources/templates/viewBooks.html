@@ -1,9 +1,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 	<div align="center">
-		<form action="#" th:action="@{/books}" th:object="${book}"
-			method="get">
-			<h4>Book Found !</h4>
+		
+			<h4>Following Books available in LMS </h4>
 			<table border="1">
 				<thead>
 					<tr>
@@ -15,7 +14,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="book : ${SearchedBooks}">
+					<tr th:each="book : ${studentBookView}">
 						<td th:text="${book.id}"></td>
 						<td th:text="${book.bookname}"></td>
 						<td th:text="${book.author}"></td>

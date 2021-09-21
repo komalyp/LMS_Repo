@@ -10,7 +10,7 @@ public class Const {
 	public static final String BOOK = "book";
 	public static final String ADD_BOOK = "add-book";
 	public static final String SEARCH = "/search";
-	public static final String SEARCH_BOOK = "search-book";
+	public static final String SEARCH_BOOK = "/search-book";
 	public static final String SEARCH_ID = "/search1/{id}";
 	public static final String SEARCHED_BOOK = "SearchedBooks";
 	public static final String BOOK_FOUND = "book-found.html";

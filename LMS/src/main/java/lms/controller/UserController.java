@@ -44,24 +44,38 @@ public class UserController {
 		return "signup";
 	}
 
-	@PostMapping("/saveUser")
+	@RequestMapping(path = "/saveUser",method = RequestMethod.POST)
 	public String processRegister(@ModelAttribute("user") User user) {
-		userRepo.save(user);
-		return "users";
+		System.out.println("We are in Save User");
+		usService.saveUser(user);
+		System.out.println("We are in Save User after saveuser");
+		return Const.HOME;
 	}
  
-	@PostMapping("/login")
+	@RequestMapping(path ="/showLogin",method = RequestMethod.GET)
+	public String showLoginForm(Model model) {
+		System.out.println("We are in loginform");
+		User user = new User();
+		model.addAttribute("user", user);
+		System.out.println("We are in login form after user line");
+		return "login";
+	}
+	@RequestMapping(path ="/userLogin",method = RequestMethod.POST)
 	public String manageUserLogin(@ModelAttribute("user") User user) {
+		System.out.println("We are in manageLogin");
 		String email = user.getEmailid();
 		String pass = user.getPassword();
-
+		System.out.println("We are in managelogin after pass");
 		User us = usService.userLogin(email, pass);
 		if (us != null) {
-			Role role = us.getRoleid();
-			if (role.getRoleid() != 1) {// Admin
-				return "home";
+		 int roleId=us.getRoleid();
+			System.out.println("We are in us condition"+roleId);
+			if (roleId!= 1) {// Admin
+				System.out.println("We are going into Adminhome");
+				return "adminHome";
 			}
 		}
-		return "user";
+		System.out.println("We are going to Students(users)");
+		return "studentHome";
 	}
 }
