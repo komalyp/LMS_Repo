@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div align="center">
+		<h3>Welcome User</h3>
+		<a href="/student/viewBookByUser">View Books</a> 
+		<a href="/student/search">SearchBook</a>
+		<a href="/student/orderBook">Order Book</a> 
+		<a href="/student/returnBook">Return Book</a>
+
+		<table border="1">
+			<!-- 	<thead>
+				<tr>
+					<th>Id</th>
+					<th>Book Name</th>
+					<th>Author Name</th>
+					<th>Quantity</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+			</thead> -->
+			<tbody>
+				<tr th:each="book : ${studentViewBook}">
+					<td th:text="${book.id}"></td>
+					<td th:text="${book.bookname}"></td>
+					<td th:text="${book.author}"></td>
+					<td th:text="${book.quantity}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div align="center">
+			<form action="#" th:action="@{/student}" th:object="${book}"
+				method="get">
+				<input type="submit" value="Logout">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -22,8 +22,8 @@ import lms.service.BookService;
 import utility.Const;
 
 @Controller
-@RequestMapping(Const.BOOKS)
-public class BookController {
+@RequestMapping(Const.ADMIN)
+public class AdminBookController {
 
 	@Autowired
 	BookService bookService;
@@ -36,28 +36,21 @@ public class BookController {
 	 * 
 	 * }
 	 */
-	@GetMapping
-	public String getAllBooks(Model model) {
-		List<Book> list = bookService.loadAllBooks();
-		model.addAttribute(Const.ALL_BOOKS, list);
-		return "adminHome";
-	}
-	
 	@GetMapping(path="/viewBook")
 	public String viewBooksByAdmin(Model model) {
 		List<Book> list = bookService.loadAllBooks();
 		model.addAttribute("adminViewBooks", list);
-		return "adminHome";
+		return "/admin/adminHome";
 	}
 	
-	@GetMapping(path="/viewBookByUser")
+/*	@GetMapping(path="/viewBookByUser")
 	public String viewBooks(Model model) {
 		List<Book> list = bookService.loadAllBooks();
 		model.addAttribute("studentViewBook", list);
 		
 		return "studentHome";
 	}
-
+*/
 	@RequestMapping(Const.NEW_BOOK)
 	public String showNewBookPage(Model model) {
 		Book book = new Book();
@@ -68,15 +61,15 @@ public class BookController {
 	@PostMapping(Const.SAVE)
 	public String saveNewBook(@ModelAttribute(Const.BOOK) Book book) {
 		bookService.saveBook(book);
-		return "adminHome";
+		return "/admin/adminHome";
 	}
 
-	@RequestMapping(Const.SEARCH)
+	@RequestMapping(Const.ADMIN_SEARCH_FORM )
 	public String showSearchBookPage(Model model) {
 		Book book = new Book();
 		System.out.println("We are in Search book form");
 		model.addAttribute(Const.BOOK, book);
-		return Const.SEARCH_BOOK;
+		return Const.ADMIN_SEARCH;
 	}
 
 	@PostMapping(Const.SEARCH_ID)
@@ -107,28 +100,21 @@ public class BookController {
 	private String updateBook(@PathVariable("id") int id, @ModelAttribute Book book) {
 		book.setId(id);
 		bookService.updateBook(book);
-		return Const.REDIRECT_BOOKS;
+		return Const.REDIRECT_ADMIN;
 	}
 
 	@GetMapping(Const.DELETE)
 	private String deleteBook(@PathVariable("id") int id) {
 		bookService.deleteBook(id);
-		return Const.REDIRECT_BOOKS;
+		return Const.REDIRECT_ADMIN;
 	}
 	
-	@GetMapping(path="/allOrders")
+/*	@GetMapping(path="/allOrders")
 	private String viewAllOrders(Model model) {
 		List<BookOrder> orders= bookOrderRepo.findAll();
 		model.addAttribute("orderdBooks",orders);
 		return "home";
 	}
-	
+	*/
 
 }
-/*
- * @GetMapping(value = "/browsebooks") public String
- * browseBooks(@RequestParam(required = false) String title, Model model) {
- * List<Book> books; books = bookService.searchBook(title);
- * model.addAttribute("Searched Books", books); return
- * "books/user-browse-books.html"; }
- */

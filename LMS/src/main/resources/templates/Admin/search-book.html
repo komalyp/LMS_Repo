@@ -1,15 +1,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Browse Book</title>
+<title>Search Book</title>
 </head>
 <body>
 	<div align="center">
-		<form action="#" th:action="@{/books/browsebooks}" th:object="${book}"
-			method="GET">
+		<form action="#" th:action="@{/admin/search1/{id}(id=${book.id})}"
+			th:object="${book}" method="post">
 			<table border="1">
 				<tr>
-					<td>BookName:</td>
-					<td><input type="text" th:field="*{bookname}" /></td>
+					<td>Id:</td>
+					<td><input type="number" th:field="*{id}" /></td>
 				</tr>
 				<tr>
 					<td colspan="2"><button type="submit">Search</button></td>
@@ -19,3 +19,4 @@
 		</div>
 </body>
 </html>
+

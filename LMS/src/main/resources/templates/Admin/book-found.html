@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div align="center">
+		<form action="#" th:action="@{/admin/adminHome}" th:object="${book}"
+			method="get">
+			<h4>Book Found !</h4>
+			<table border="1">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Book Name</th>
+						<th>Author Name</th>
+						<th>Quantity</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="book : ${SearchedBooks}">
+						<td th:text="${book.id}"></td>
+						<td th:text="${book.bookname}"></td>
+						<td th:text="${book.author}"></td>
+						<td th:text="${book.quantity}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="submit" value="Go back">
+		</form>
+	</div>
+</body>
+</html>

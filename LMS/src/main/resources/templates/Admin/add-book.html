@@ -1,13 +1,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Update Book</title>
+<title>Add New Book</title>
 </head>
 <body>
 	<div align="center">
-		<form action="#" th:action="@{/books/update/{id}(id=${book.id})}"
-			th:object="${book}" method="post">
+		<form action="#" th:action="@{/admin/save}" th:object="${book}"
+			method="post">
 
 			<table border="1">
+				<tr>
+					<td>Id:</td>
+					<td><input type="text" th:field="*{id}" /></td>
+				</tr>
 				<tr>
 					<td>Book Name:</td>
 					<td><input type="text" th:field="*{bookname}" /></td>
