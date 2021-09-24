@@ -1,11 +1,17 @@
 package lms.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "User")
@@ -13,12 +19,14 @@ public class User {
 
 	@Id
 	@Column(name = "Emailid")
+	@GeneratedValue
+	//@GenericGenerator(name="system-uuid", strategy = "uuid")
 	private String emailid;
 
 	@Column(name = "Firstname")
 	private String firstname;
 
-	@Column(name = "Lastname")
+	@Column(name = "Lastname") 
 	private String lastname;
 
 	@Column(name = "Password")

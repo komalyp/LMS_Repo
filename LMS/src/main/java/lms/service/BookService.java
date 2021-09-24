@@ -45,10 +45,10 @@ public class BookService {
 		return bookRepository.getBookById(id);
 
 	}
-
+	
 	public Book searchBook(int id) {
 		System.out.println("Service SearchBook Id:" + id);
-		System.out.println("Service SearchBook Id using findbookbyid:" + findBookById(id));
+		//System.out.println("Service SearchBook Id using findbookbyid:" + findBookById(id));
 		return findBookById(id);
 	}
 

@@ -17,23 +17,23 @@
 					<th>Update</th>
 					<th>Delete</th>
 				</tr>
-			</thead>-->
+			</thead>
 			<tbody>
 				<tr th:each="book : ${adminViewBooks}">
 					<td th:text="${book.id}"></td>
 					<td th:text="${book.bookname}"></td>
 					<td th:text="${book.author}"></td>
 					<td th:text="${book.quantity}"></td>
-					<td><a th:href="@{/books/edit/{id}(id=${book.id})}">Update</a></td>
-					<td><a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
+					<td><a th:href="@{/admin/edit/{id}(id=${book.id})}">Update</a></td>
+					<td><a th:href="@{/admin/delete/{id}(id=${book.id})}">Delete</a>
 				</td>
 				</tr>
 			</tbody>
-		</table>
+		</table>-->
 	    </div>
 	    
 	    <div align="center">
-		<form action="#" th:action="@{/admin}" th:object="${book}"
+		<form action="#" th:action="@{/users}" th:object="${book}"
 			method="get">
 			<input type="submit" value="Logout">
 		</form>

@@ -2,6 +2,7 @@ package lms.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,11 +22,11 @@ public class BookOrder {
 	@Column(name="orderid")
 	private int orderid;
 	
-	 @ManyToOne
+	 @ManyToOne(cascade = CascadeType.ALL)
 		@JoinColumn(name = "emailid")
 	private User emailid;
 	 
-	 @ManyToOne
+	 @ManyToOne(cascade = CascadeType.ALL)
 	 @JoinColumn(name = "bookid")
 	private Book id;
 	

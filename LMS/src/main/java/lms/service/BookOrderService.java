@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lms.model.BookOrder;
+import lms.model.User;
 import lms.repository.BookOrderRepository;
 
 @Service
@@ -65,6 +66,10 @@ public class BookOrderService {
 		return bookOrderRepo.findBookId(bookOrder.getOrderid());
 	}
 	
+	/*public String currentUserEmail(User emailId,BookOrder bookOrder)
+	{   bookOrder.getEmailid(emailId);
+		return bookOrderRepo.save(bookOrder);
+	}*/
 	public void viewAllOrders() {
 		System.out.println("---BOOKS---");
 		List<BookOrder> orders= bookOrderRepo.findAll();

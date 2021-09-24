@@ -28,8 +28,8 @@ public class Const {
 	public static final String SEARCHED_BOOK = "SearchedBooks";
 	
 	
-	public static final String USER_BOOK_FOUND = "book-found_by_user.html";
-	public static final String USER_BOOK__NOT_FOUND = "book-not-found_by_user.html";
+	public static final String USER_BOOK_FOUND = "/student/book_found_by_user.html";
+	public static final String USER_BOOK__NOT_FOUND = "/student/book_not_found_by_user.html";
 	
 	//public static final String ALL_BOOKS = "allBooks";
 	
@@ -39,7 +39,7 @@ public class Const {
 	public static final String REDIRECT_ADMIN = "redirect:/admin";
 	
 	public static final String EDIT = "/edit/{id}";
-	public static final String EDIT_BOOK = "edit-book";
+	public static final String EDIT_BOOK = "/admin/edit-book";
 	public static final String UPDATE_ON_ID = "/update/{id}";
 	
 	public static final String DELETE = "/delete/{id}";

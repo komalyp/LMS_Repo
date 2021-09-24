@@ -1,5 +1,6 @@
 package lms.controller;
 
+import java.util.Date;
 import java.util.List;
 //import utility.Constants;
 //import java.util.Optional;
@@ -15,9 +16,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+//import org.springframework.security.core.context.SecurityContextHolder;
 import lms.model.Book;
 import lms.model.BookOrder;
+import lms.model.User;
 import lms.repository.BookOrderRepository;
+import lms.repository.UserRepository;
+import lms.service.BookOrderService;
 import lms.service.BookService;
 import utility.Const;
 
@@ -29,21 +37,33 @@ public class UserBookController {
 	BookService bookService;
 
 	@Autowired
+	BookOrderService bookOrderService;
+
+	@Autowired
 	BookOrderRepository bookOrderRepo;
-	
-	
-	
-	@GetMapping(path="/viewBookByUser")
+
+	@Autowired
+	UserRepository usRepo;
+
+	@GetMapping
+	public String viewStudentHome(Model model) {
+		System.out.println("in student");
+		List<Book> list = bookService.loadAllBooks();
+		model.addAttribute("Books", list);
+		return "/student/studentHome";
+	}
+
+	@GetMapping(path = "/viewBookByUser")
 	public String viewBooks(Model model) {
 		List<Book> list = bookService.loadAllBooks();
 		model.addAttribute("studentViewBook", list);
-		
-		return "studentHome";
+
+		return "/student/viewBooks";
 	}
-	@RequestMapping(Const.USER_SEARCH_FORM )
+
+	@RequestMapping(Const.USER_SEARCH_FORM)
 	public String showSearchBookPage(Model model) {
 		Book book = new Book();
-		System.out.println("We are in Search book form");
 		model.addAttribute(Const.BOOK, book);
 		return Const.USER_SEARCH;
 	}

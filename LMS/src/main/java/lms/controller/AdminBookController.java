@@ -36,11 +36,20 @@ public class AdminBookController {
 	 * 
 	 * }
 	 */
+	
+
+	@GetMapping
+	public String viewHome(Model model) {
+		List<Book> list = bookService.loadAllBooks();
+		model.addAttribute("Books", list);
+		return "/admin/adminHome";
+	}
+	
 	@GetMapping(path="/viewBook")
 	public String viewBooksByAdmin(Model model) {
 		List<Book> list = bookService.loadAllBooks();
-		model.addAttribute("adminViewBooks", list);
-		return "/admin/adminHome";
+		model.addAttribute("adminBooks", list);
+		return "/admin/adminviewBooks";
 	}
 	
 /*	@GetMapping(path="/viewBookByUser")
@@ -100,13 +109,13 @@ public class AdminBookController {
 	private String updateBook(@PathVariable("id") int id, @ModelAttribute Book book) {
 		book.setId(id);
 		bookService.updateBook(book);
-		return Const.REDIRECT_ADMIN;
+		return "/admin/adminHome";
 	}
 
 	@GetMapping(Const.DELETE)
 	private String deleteBook(@PathVariable("id") int id) {
 		bookService.deleteBook(id);
-		return Const.REDIRECT_ADMIN;
+		return "/admin/adminHome";
 	}
 	
 /*	@GetMapping(path="/allOrders")
